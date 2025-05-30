@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Augment续杯",
-  "version": "1.0",
-  "description": "在Augment登录页面添加续杯功能",
+  "name": "Cursor & Augment 免费助手",
+  "version": "2.0",
+  "description": "支持Cursor与Augment双平台自动获取新账号、一键重置新额度、解决机器码问题、自动满额度",
   "icons": {
     "48": "icon.ico",
     "128": "icon.ico"
@@ -15,14 +15,22 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "tabs",
+    "nativeMessaging",
+    "downloads"
   ],
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["*://login.augmentcode.com/*"],
+      "matches": [
+        "*://login.augmentcode.com/*",
+        "*://www.cursor.com/*",
+        "*://cursor.com/*",
+        "*://auth.cursor.sh/*"
+      ],
       "js": ["content.js"],
       "run_at": "document_end"
     }
